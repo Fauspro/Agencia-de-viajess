@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Senderos & Aventura | Excursiones y trekking</title>
+<meta name="description" content="Excursiones regionales y trekking: destinos del mes, calculadora de presupuesto y reservas online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;800&family=Outfit:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="logo" href="#inicio">Senderos &amp; Aventura</a>
+  <nav aria-label="Principal">
+    <a href="#destinos">Destinos</a><a href="#simulador">Presupuesto</a><a href="#calendario">Salidas</a><a href="#consejos">Consejos</a><a class="btn-mini" href="#reserva">Reservar</a>
+  </nav>
+</header>
+
+<main>
+<section id="inicio" class="hero" aria-label="Inicio">
+  <div class="slider" id="slider" aria-roledescription="carrusel">
+    <div class="slides" id="slides"></div>
+    <button class="arrow prev" id="prev" aria-label="Foto anterior">&#10094;</button>
+    <button class="arrow next" id="next" aria-label="Foto siguiente">&#10095;</button>
+    <div class="dots" id="dots"></div>
+  </div>
+  <div class="hero-content">
+    <h1>Caminá lo que ves en el horizonte</h1>
+    <p>Excursiones regionales y trekking con guías locales. Elegí tu salida del mes y reservá en minutos.</p>
+    <form class="quick" id="quick">
+      <label>Dificultad
+        <select id="qDif"><option value="todas">Cualquiera</option><option>Baja</option><option>Media</option><option>Alta</option></select>
+      </label>
+      <label>Actividad
+        <select id="qTipo"><option value="todas">Cualquiera</option><option>Trekking</option><option>Caminata</option><option>Cabalgata</option><option>Termas</option></select>
+      </label>
+      <button class="btn" type="submit">Buscar excursión</button>
+    </form>
+  </div>
+</section>
+
+<section id="destinos" class="sec">
+  <h2>Destinos del mes</h2>
+  <div class="filters" id="filters" role="group" aria-label="Filtrar por dificultad">
+    <button class="chip active" data-dif="todas">Todas</button>
+    <button class="chip" data-dif="Baja">Baja</button>
+    <button class="chip" data-dif="Media">Media</button>
+    <button class="chip" data-dif="Alta">Alta</button>
+  </div>
+  <p class="count" id="count" aria-live="polite"></p>
+  <div class="cards" id="cards"></div>
+</section>
+
+<section id="simulador" class="sec alt">
+  <h2>Simulador de viaje</h2>
+  <div class="calc">
+    <div class="calc-form">
+      <label>Destino <select id="cDestino"></select></label>
+      <label>Pasajeros <input type="number" id="cPax" min="1" max="30" value="2"></label>
+      <fieldset><legend>Adicionales (por persona)</legend>
+        <label class="check"><input type="checkbox" id="cAlmuerzo"> Almuerzo en ruta (+$6.000)</label>
+        <label class="check"><input type="checkbox" id="cEquipo"> Equipo técnico (+$9.000)</label>
+      </fieldset>
+      <p class="hint">Descuento por grupo: 4 a 6 pasajeros 5%, 7 a 10 pasajeros 10%, 11 o más 15%.</p>
+    </div>
+    <div class="calc-out" aria-live="polite">
+      <dl id="breakdown"></dl>
+      <p class="total">Total <strong id="total">$0</strong></p>
+      <a class="btn" href="#reserva" id="toReserva">Reservar este presupuesto</a>
+    </div>
+  </div>
+</section>
+
+<section id="calendario" class="sec">
+  <h2>Calendario de salidas</h2>
+  <div class="dates" id="dates"></div>
+</section>
+
+<section id="consejos" class="sec alt">
+  <h2>Recomendaciones para el viajero</h2>
+  <div class="tips">
+    <article><h3>Qué llevar puesto</h3><ul><li>Ropa en capas: térmica, abrigo liviano y cortaviento.</li><li>Calzado de trekking con suela firme, ya usado.</li><li>Gorro, anteojos y protector solar.</li></ul></article>
+    <article><h3>En la mochila</h3><ul><li>Al menos 2 litros de agua por persona.</li><li>Snacks energéticos y botiquín personal.</li><li>Impermeable y una muda seca.</li></ul></article>
+    <article><h3>Seguridad</h3><ul><li>Seguí siempre las indicaciones del guía.</li><li>No te separes del grupo ni del sendero marcado.</li><li>Avisá antes de salir si tenés alguna condición médica.</li></ul></article>
+  </div>
+</section>
+
+<section id="reserva" class="sec">
+  <h2>Reserva y contacto</h2>
+  <form class="booking" id="booking" novalidate>
+    <label>Nombre completo <input type="text" id="fNombre" required minlength="3" autocomplete="name"></label>
+    <label>Email <input type="email" id="fEmail" required autocomplete="email"></label>
+    <label>Destino <select id="fDestino" required></select></label>
+    <label>Fecha de salida <input type="date" id="fFecha" required></label>
+    <label>Pasajeros <input type="number" id="fPax" min="1" max="30" value="2" required></label>
+    <label class="full">Comentarios <textarea id="fMsg" rows="3"></textarea></label>
+    <p class="error full" id="formError" role="alert"></p>
+    <button class="btn full" type="submit">Enviar reserva tentativa</button>
+    <p class="ok full" id="formOk" role="status"></p>
+  </form>
+</section>
+</main>
+
+<footer><p>&copy; <span id="year"></span> Senderos &amp; Aventura. Excursiones regionales y trekking.</p></footer>
+<script src="script.js"></script>
+</body>
+</html>
